@@ -1,0 +1,35 @@
+# For more information: https://laravel.com/docs/sail
+version: '3'
+services:
+    laravel:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - '8088:5000'
+        volumes:
+            - '.:/app'
+            - ./deployment/laravel/php.ini:/usr/local/etc/php/conf.d/php.ini
+        networks:
+            - pokemon-api
+        depends_on:
+            - pgsql
+    pgsql:
+        image: 'postgres:14'
+        ports:
+            - '5433:5432'
+        environment:
+            PGPASSWORD: '${DB_PASSWORD:-secret}'
+            POSTGRES_DB: '${DB_DATABASE}'
+            POSTGRES_USER: '${DB_USERNAME}'
+            POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+        volumes:
+            - pgsql:/var/lib/postgresql/data
+        networks:
+            - pokemon-api
+networks:
+    pokemon-api:
+        driver: bridge
+volumes:
+    pgsql:
+        driver: local
