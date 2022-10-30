@@ -63,5 +63,8 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'jwt.verify' => \App\Http\Middleware\v1\JwtMiddleware::class,
+        'jwt.auth' => 'PHPOpenSourceSaver\JWTAuth\Middleware\GetUserFromToken',
+        'jwt.refresh' => 'PHPOpenSourceSaver\JWTAuth\Middleware\RefreshToken',
     ];
 }
