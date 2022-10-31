@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Enums;
+
+enum StatusCodeEnum: int
+{
+    // Login: 10xx
+    case LOGIN_EMAIL_REQUIRED = 1001;
+    case LOGIN_PASSWORD_INCORRECT = 1002;
+    case LOGIN_EMAIL_DOES_NOT_EXIST = 1003;
+    case LOGIN_PASSWORD_REQUIRED = 1004;
+    case LOGIN_PASSWORD_LEAST = 1005;
+
+    // Register: 11xx
+    case REGISTER_DISPLAY_NAME_REQUIRED = 1101;
+    case REGISTER_EMAIL_REQUIRED = 1102;
+    case REGISTER_EMAIL_EXISTED = 1103;
+    case REGISTER_PASSWORD_REQUIRED = 1104;
+    case REGISTER_PASSWORD_NOT_CONFIRMED = 1105;
+    case REGISTER_PASSWORD_LEAST = 1106;
+
+    // Resend Verify: 12xx
+    case RESEND_VERIFY_EMAIL_REQUIRED = 1201;
+    case RESEND_VERIFY_EMAIL_DOES_NOT_EXIST = 1202;
+    case RESEND_VERIFY_EMAIL_VERIFIED = 1203;
+
+    // Login otp: 13xx
+    case LOGIN_OTP_EMAIL_REQUIRED = 1301;
+    case LOGIN_OTP_EMAIL_DOES_NOT_EXIST = 1302;
+    case LOGIN_OTP_TOKEN_INVALID = 1303;
+
+    // Token: 30xx
+    case TOKEN_INVALID = 3001;
+    case TOKEN_EXPIRED = 3002;
+    // Chung
+    case INTERNAL_SERVER_ERROR = 5000;
+    case API_ENDPOINT_NOT_FOUND = 4004;
+    case AUTHENTICATION_FAILED = 4001;
+}
+
+?>
