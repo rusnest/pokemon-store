@@ -10,7 +10,7 @@ cp .env.example .env
 docker-compose up -d
 ```
 
-### Hướng dẫn tạo jwt
-```
+### Hướng dẫn tạo jwt secret
+``` 
 php artisan jwt:secret
 ```
